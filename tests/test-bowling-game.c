@@ -29,3 +29,18 @@ test_gutter_game(void)
 
     TEST_ASSERT_EQUAL(0, bowling_game_score());
 }
+
+
+void
+test_all_ones_game(void)
+{
+    int i;
+
+    for (i = 0; i < 20; i++)
+    {
+        bowling_game_roll(1);
+    }
+
+    TEST_ASSERT_EQUAL(20, bowling_game_score());
+}
+
