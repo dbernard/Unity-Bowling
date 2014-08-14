@@ -46,3 +46,14 @@ test_all_ones_game(void)
     TEST_ASSERT_EQUAL(20, bowling_game_score());
 }
 
+
+void test_one_spare(void)
+{
+    bowling_game_roll(5);
+    bowling_game_roll(5);
+    bowling_game_roll(3);
+    roll_many(17, 0);
+
+    TEST_ASSERT_EQUAL(16, bowling_game_score());
+}
+

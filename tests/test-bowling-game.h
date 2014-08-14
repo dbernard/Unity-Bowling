@@ -5,5 +5,6 @@ void setUp(void);
 void tearDown(void);
 void test_gutter_game(void);
 void test_all_ones_game(void);
+void test_one_spare(void);
 
 #endif

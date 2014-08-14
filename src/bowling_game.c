@@ -1,25 +1,47 @@
 #include "bowling_game.h"
+#include "string.h"
 
-
-static int s_score;
+enum { max_rolls = 21 };
+static int rolls[max_rolls];
+static int current_roll;
 
 
 void
 bowling_game_init(void)
 {
-    s_score = 0;
+    current_roll = 0;
+    // Initialize array to have all 0s
+    memset(&rolls[0], 0, sizeof(rolls));
 }
 
 
 void
 bowling_game_roll(int pins)
 {
-    s_score += pins;
+    rolls[current_roll] = pins;
+    current_roll++;
 }
 
 
 int
 bowling_game_score()
 {
-    return s_score;
+    int score = 0;
+
+    int i = 0;
+    for (int frame=0; frame<10; frame++)
+    {
+        if (rolls[i] + rolls[i+1] == 10)
+        {
+            score += 10 + rolls[i+2];
+            i += 2;
+        }
+        else
+        {
+            score += rolls[i] + rolls[i+1];
+            i += 2;
+        }
+    }
+
+    return score;
 }
