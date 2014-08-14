@@ -18,14 +18,21 @@ tearDown(void)
 
 
 void
-test_gutter_game(void)
+roll_many(int rolls, int pins)
 {
     int i;
 
-    for (i = 0; i < 20; i++)
+    for (i = 0; i < rolls; i++)
     {
-        bowling_game_roll(0);
+        bowling_game_roll(pins);
     }
+}
+
+
+void
+test_gutter_game(void)
+{
+    roll_many(20, 0);
 
     TEST_ASSERT_EQUAL(0, bowling_game_score());
 }
@@ -34,12 +41,7 @@ test_gutter_game(void)
 void
 test_all_ones_game(void)
 {
-    int i;
-
-    for (i = 0; i < 20; i++)
-    {
-        bowling_game_roll(1);
-    }
+    roll_many(20, 1);
 
     TEST_ASSERT_EQUAL(20, bowling_game_score());
 }
