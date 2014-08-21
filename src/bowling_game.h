@@ -5,9 +5,15 @@
 extern "C" {
 #endif
 
-void bowling_game_init(void);
-void bowling_game_roll(int pins);
-int bowling_game_score();
+// Forward declaration
+typedef struct bowling_game_t bowling_game_t;
+
+bowling_game_t *
+bowling_game_create(void);
+void bowling_game_destroy(bowling_game_t *g);
+
+void bowling_game_roll(bowling_game_t *g, int pins);
+int bowling_game_score(bowling_game_t *g);
 
 #ifdef __cplusplus
 }
